@@ -1,0 +1,330 @@
+* {
+    box-sizing: border-box;
+    /*transition: transform 0.25s ease;*/
+}
+
+
+body {
+    background: #ffd6d6;
+    font: 500 16px "Product Sans Regular", sans-serif;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    margin: 0;
+}
+
+.canvas {
+    width: 600px;
+    height: 600px;
+    margin: auto;
+    position: relative;
+    display: flex;
+    /*background: #ffcccc;*/
+    transform-style: preserve-3d;
+    top: -100px;
+}
+
+
+.cake_sauce {
+    position: absolute;
+    background: #ff3a13;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    transform: rotateX(80deg);
+}
+
+.cake_layer, .cake_shadow {
+    --cake_width: 250px;
+    --cake_height: 65px;
+    --cake_border: 0px solid black;
+    --layer_top: #F94821;
+    --layer_front: #f8f2b0;
+    --layer_right: #ece091;
+    position: absolute;
+    perspective: 1600px;
+    top: 200px;
+    left: 200px;
+    perspective-origin: 1500px -800px;
+    transform: scaleY(1.1) skewY(15deg);
+
+}
+
+.big_cake {
+    animation: float 4s ease-in-out infinite;
+}
+
+.cake_shadow {
+    filter: blur(2px);
+    animation: shadow_floating 4s ease-in-out infinite;
+}
+
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(7px);
+    }
+}
+
+@keyframes shadow_floating {
+
+    0% {
+        filter: blur(2px);
+    }
+
+    50% {
+        filter: blur(0);
+    }
+    
+}
+
+.cake_shadow {
+    z-index: -1;
+}
+
+.cake_shadow_inner {
+    width: var(--cake_width);
+    aspect-ratio: 1/1;
+    top: 105px;
+    border: var(--cake_border);
+    position: absolute;
+    transform-origin: 50% 50%;
+    transform: rotateX(-90deg);
+    background: #00000055;
+}
+
+.c2 {
+    top: 225px;
+    --cake_height: 60px;
+    --layer_front: linear-gradient(#D8923E 70%, #bb7719);
+    --layer_right: linear-gradient(#D8923E 70%, #bb7719);
+}
+
+
+.c3 {
+    top: 200px;
+    --cake_height: 10px;
+    --layer_top: #ff7f4d;
+    --layer_front: #f57340;
+    --layer_right: #e86630;
+    /*--layer_top: linear-gradient(#ff7b46, #fc6c33);*/
+    /*--layer_front: linear-gradient(#ff7b46, #ff7b46);*/
+    /*--layer_right: linear-gradient(90deg, #ff7b46, #ff7b46);*/
+}
+
+.cake_big_face {
+    width: var(--cake_width);
+    aspect-ratio: 1/1;
+    border: var(--cake_border);
+    position: absolute;
+    transform-origin: 50% 50%;
+}
+
+.cake_top {
+    transform: rotateX(-90deg);
+    background: var(--layer_top);
+}
+
+.cake_side {
+    position: absolute;
+    width: var(--cake_width);
+    height: var(--cake_height);
+}
+
+.cake_front {
+    transform: translateZ(calc(var(--cake_width) / 2)) translateY(calc(var(--cake_width) / 2));
+    background: var(--layer_front);
+}
+
+.cake_back {
+    transform: translateZ(calc(0px - var(--cake_width) / 2)) translateY(calc(var(--cake_width) / 2));
+}
+
+.cake_right {
+    transform: translateX(calc(var(--cake_width) / 2)) translateY(calc(var(--cake_width) / 2)) rotateY(90deg);
+    background: var(--layer_right);
+}
+
+.cake_left {
+    transform: translateX(calc(0px - var(--cake_width) / 2)) translateY(calc(var(--cake_width) / 2)) rotateY(90deg);
+}
+
+.cake_bottom {
+    transform: translateY(var(--cake_height)) rotateX(-90deg);
+}
+
+.strawberry {
+    display: flex;
+    position: absolute;
+    width: 90px;
+    height: 95px;
+    background: #ff7b46 radial-gradient(ellipse, #00000044 0%, #00000044 17%, transparent 15%);
+    background-size: 14px 32px;
+    border-radius: 100px 100px 110px 110px / 70px 70px 150px 150px;
+    padding: 5px 22px 20px;
+    background-position: 4px 2px;
+    top: 227px;
+    left: 270px;
+    z-index: 5;
+    transform: rotate(60deg);
+    /*border: 2px solid rgba(255, 230, 230, 0.67);*/
+}
+
+.strawberry_leaf {
+    border-radius: 50%;
+    width: 10px;
+    height: 30px;
+    background: #1fde1f;
+    position: absolute;
+    top: -4px;
+    left: 40px;
+    transform-origin: 50% -3%;
+}
+
+.strawberry_leaf:first-of-type {
+    transform: rotate(70deg);
+}
+
+.strawberry_leaf:last-of-type {
+    transform: rotate(-70deg);
+}
+
+.strawberry_leaf:nth-of-type(2) {
+    transform: rotate(-35deg);
+}
+
+.strawberry_leaf:nth-of-type(4) {
+    transform: rotate(35deg);
+}
+
+
+.cream_topping {
+    position: absolute;
+    left: 10px;
+    top: -10px;
+}
+
+.cream_base {
+    position: absolute;
+    background: white;
+    /*border: 2px solid #fcfcfc*/
+}
+
+.cream_base_1 {
+    width: 190px;
+    height: 60px;
+    border-radius: 130px / 40px;
+    top: 350px;
+    left: 220px;
+    transform: rotate(353deg) scaleY(1.2);
+}
+
+.cream_base_2 {
+    width: 176px;
+    height: 47px;
+    border-radius: 130px / 40px;
+    top: 335px;
+    left: 225px;
+    transform: rotate(353deg) scaleY(1.2);
+}
+
+.cream_base_3 {
+    width: 155px;
+    height: 40px;
+    border-radius: 155px / 42px;
+    top: 315px;
+    left: 232px;
+    transform: rotate(353deg) scaleY(1.2);
+}
+
+.cream_base_4 {
+    width: 130px;
+    height: 30px;
+    border-radius: 155px / 42px;
+    top: 297px;
+    left: 242px;
+    transform: rotate(353deg) scaleY(1.2);
+}
+
+.cream_base_4_clip {
+    z-index: 6;
+    clip-path: polygon(0% 35%, 20% 28%, 25% 30%, 30% 35%, 35% 41%, 42% 49%, 50% 53%, 55% 50%, 61% 41%,  65% 36%, 75% 30%, 100% 20%, 100% 100%, 0% 100%);
+}
+
+.c3 .cake_front .drip_1 {
+    background: var(--layer_front);
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 10px;
+    border-radius: 0 0 30px 30px;
+}
+
+.c3 .cake_front .drip_1 {
+    background: var(--layer_front);
+    height: 45px;
+    width: 20px;
+    position: absolute;
+    left: 120px;
+    border-radius: 0 0 30px 30px;
+}
+
+.c3 .cake_front .drip_2 {
+    background: var(--layer_front);
+    height: 30px;
+    width: 50px;
+    position: absolute;
+    left: 30px;
+    border-radius: 0 0 30px 30px;
+}
+
+.c3 .cake_front .drip_3 {
+    background: var(--layer_front);
+    height: 35px;
+    width: 30px;
+    position: absolute;
+    left: 180px;
+    border-radius: 0 0 30px 30px;
+}
+
+.c3 .cake_front .drip_4 {
+    background: var(--layer_front);
+    height: 35px;
+    width: 30px;
+    position: absolute;
+    left: 140px;
+    border-radius: 0 0 30px 30px;
+}
+
+
+.c3 .cake_right .drip_1 {
+    background: var(--layer_right);
+    height: 30px;
+    width: 20px;
+    position: absolute;
+    left: 110px;
+    border-radius: 0 0 30px 30px;
+}
+
+.c3 .cake_right .drip_2 {
+    background: var(--layer_right);
+    height: 25px;
+    width: 40px;
+    position: absolute;
+    left: 30px;
+    border-radius: 0 0 30px 30px;
+}
+
+.c3 .cake_right .drip_3 {
+    background: var(--layer_right);
+    height: 40px;
+    width: 30px;
+    position: absolute;
+    left: 180px;
+    border-radius: 0 0 30px 30px;
+}
